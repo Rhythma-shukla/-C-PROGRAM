@@ -2,34 +2,30 @@
 
 int main()
 {
-    FILE *fp1, *fp2;
-    char ch;
+    int a, b, temp;
+    int *p1;
+    int *p2;
 
-    fp1 = fopen("sample.txt", "r");
-    fp2 = fopen("destination.txt", "w");
+    printf("Enter 1st number : ");
+    scanf("%d", &a);
 
-    if (fp1 == NULL)
-    {
-        printf("File cannot be opened.");
-        return 1;
-    }
+    printf("Enter 2nd number : ");
+    scanf("%d", &b);
 
-    if (fp2 == NULL)
-    {
-        printf("Destination file cannot be opened.");
-        fclose(fp1);
-        return 1;
-    }
+    p1 = &a;
+    p2 = &b;
 
-    while ((ch = fgetc(fp1)) != EOF)
-    {
-        fputc(ch, fp2);
-    }
+    printf("\nNumbers before swapping:\n");
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
 
-    printf("File copied successfully.");
+    temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
 
-    fclose(fp1);
-    fclose(fp2);
+    printf("\nNumbers after swapping:\n");
+    printf("a = %d\n", a);
+    printf("b = %d\n", b);
 
     return 0;
 }
